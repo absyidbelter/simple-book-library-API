@@ -16,9 +16,9 @@ public class AppConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/booklibrary-Java");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("0895700");
+        dataSource.setUrl(System.getenv("DB_URL"));
+        dataSource.setUsername(System.getenv("DB_USERNAME"));
+        dataSource.setPassword(System.getenv("DB_PASSWORD"));
         return dataSource;
     }
 

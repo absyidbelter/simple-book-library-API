@@ -1,65 +1,42 @@
 package controller;
 
+import java.util.List;
+
 import model.Book;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import services.BookService;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
-    private final BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    @Autowired
+    private BookService bookService;
 
-    @GetMapping
-    public ResponseEntity<List<Book>> findAll() {
-        List<Book> books = bookService.findAll();
-        return new ResponseEntity<>(books, HttpStatus.OK);
+    @GetMapping("")
+    public List<Book> findAll() {
+        return bookService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Book> findById(@PathVariable("id") int id) {
-        Book book = bookService.findById(id);
-        if (book == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(book, HttpStatus.OK);
+    public Book findById(@PathVariable int id) {
+        return bookService.findById(id);
     }
 
-    @PostMapping
-    public ResponseEntity<Book> save(@RequestBody Book book) {
+    @PostMapping("")
+    public void save(@RequestBody Book book) {
         bookService.save(book);
-        return new ResponseEntity<>(book, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Book> update(@PathVariable("id") int id, @RequestBody Book book) {
-        Book existingBook = bookService.findById(id);
-        if (existingBook == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        existingBook.setTitle(book.getTitle());
-        existingBook.setAuthor(book.getAuthor());
-        existingBook.setPublishedDate(book.getPublishedDate());
-        bookService.update(existingBook);
-        return new ResponseEntity<>(existingBook, HttpStatus.OK);
+    public void update(@PathVariable int id, @RequestBody Book book) {
+        book.setId(id);
+        bookService.update(book);
     }
 
-
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable("id") int id) {
-        Book book = bookService.findById(id);
-        if (book == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public void delete(@PathVariable int id) {
         bookService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

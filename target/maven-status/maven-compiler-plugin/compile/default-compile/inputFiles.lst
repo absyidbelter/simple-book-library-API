@@ -1,7 +1,7 @@
-/home/absyid/Documents/Backend/Java/simple-book-library-API/src/main/java/config/AppConfig.java
-/home/absyid/Documents/Backend/Java/simple-book-library-API/src/main/java/controller/BookController.java
-/home/absyid/Documents/Backend/Java/simple-book-library-API/src/main/java/services/BookService.java
-/home/absyid/Documents/Backend/Java/simple-book-library-API/src/main/java/com/example/booklibrary/BookLibraryApplication.java
-/home/absyid/Documents/Backend/Java/simple-book-library-API/src/main/java/repository/BookRepositoryImpl.java
-/home/absyid/Documents/Backend/Java/simple-book-library-API/src/main/java/model/Book.java
-/home/absyid/Documents/Backend/Java/simple-book-library-API/src/main/java/repository/BookRepository.java
+/home/absyid/Documents/Backend/java/library-mandiri/simple-book-library-API/src/main/java/config/AppConfig.java
+/home/absyid/Documents/Backend/java/library-mandiri/simple-book-library-API/src/main/java/repository/BookRepository.java
+/home/absyid/Documents/Backend/java/library-mandiri/simple-book-library-API/src/main/java/com/example/booklibrary/BookLibraryApplication.java
+/home/absyid/Documents/Backend/java/library-mandiri/simple-book-library-API/src/main/java/model/Book.java
+/home/absyid/Documents/Backend/java/library-mandiri/simple-book-library-API/src/main/java/services/BookService.java
+/home/absyid/Documents/Backend/java/library-mandiri/simple-book-library-API/src/main/java/controller/BookController.java
+/home/absyid/Documents/Backend/java/library-mandiri/simple-book-library-API/src/main/java/repository/BookRepositoryImpl.java

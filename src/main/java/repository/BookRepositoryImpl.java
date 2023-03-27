@@ -25,25 +25,25 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public Book findById(int id) {
-        String sql = "SELECT * FROM books WHERE id = 1";
-        return jdbcTemplate.queryForObject(sql, new Object[]{id}, new BookRowMapper());
+        String sql = "SELECT * FROM books WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[] { id }, Book.class);
     }
 
     @Override
     public void save(Book book) {
-        String sql = "INSERT INTO books(title, author, published_date) VALUES (kancil, abdul, 2023-10-12)";
+        String sql = "INSERT INTO books(title, author, published_date) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(), book.getPublishedDate());
     }
 
     @Override
     public void update(Book book) {
-        String sql = "UPDATE books SET title = 1984, author = George Orwell, published_date = 1949-06-08, WHERE id = 3";
+        String sql = "UPDATE books SET title = ?, author = ?, published_date = ? WHERE id = ?";
         jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(), book.getPublishedDate(), book.getId());
     }
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM books WHERE id = 9";
+        String sql = "DELETE FROM books WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
